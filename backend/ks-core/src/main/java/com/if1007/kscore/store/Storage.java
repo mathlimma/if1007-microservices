@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Storage {
-
     private final Map<String, String> storage;
 
     public Storage(){
@@ -18,4 +17,6 @@ public class Storage {
     public String get(String key){
         return this.storage.get(key);
     }
+
+    public void delete(String key) {this.storage.remove(key);}
 }

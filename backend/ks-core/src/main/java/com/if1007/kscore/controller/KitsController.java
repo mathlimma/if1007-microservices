@@ -1,7 +1,6 @@
 package com.if1007.kscore.controller;
 
 import com.if1007.kscore.context.IRequestContext;
-import com.if1007.kscore.context.impl.RequestContext;
 import com.if1007.kscore.service.KitService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.if1007.kscore.PathsConstants.*;
+import static com.if1007.kscore.PathsConstants.KITS_PATH;
 
 @Slf4j
 @RestController

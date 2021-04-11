@@ -6,6 +6,7 @@ import com.if1007.kscore.dto.response.Content;
 import com.if1007.kscore.dto.response.KitResponse;
 import com.if1007.kscore.service.KitService;
 import com.if1007.kscore.store.Storage;
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

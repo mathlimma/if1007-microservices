@@ -1,7 +1,10 @@
 package com.if1007.kscore.context.impl;
 
 import com.if1007.kscore.context.IRequestContext;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Builder
 @Getter
