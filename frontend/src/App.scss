@@ -21,4 +21,8 @@ $theme-colors: ("primary": #1A73E8,
   background-color: #2FCAAA !important;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 @import '~bootstrap/scss/bootstrap.scss';

@@ -5,7 +5,7 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 const KsPaginator = ({ pagesNumber, currentPage }) => {
   const renderPageNumbers = () => Array.from(Array(pagesNumber).keys())
     .map((pageNumber) => (
-      <PaginationItem active={currentPage === pageNumber + 1}>
+      <PaginationItem active={currentPage === pageNumber + 1} key={pageNumber}>
         <PaginationLink href="#">
           {pageNumber + 1}
         </PaginationLink>

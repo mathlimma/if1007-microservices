@@ -8,7 +8,11 @@ const SearchPage = () => (
     <InputGroup className="mt-5">
       <Input placeholder="Procure kits compartilhados" />
     </InputGroup>
-    <KsKitGrid data={dataMock.content} hasAnalysis />
+    <KsKitGrid
+      data={dataMock.content}
+      hasAnalysis
+      itemOnClick={() => console.log("clicked")}
+    />
   </div >
 );
 
