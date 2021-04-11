@@ -1,3 +1,4 @@
+import { useState } from "react";
 import './App.css';
 import KsNavbar from './components/KsNavbar';
 import {
@@ -8,10 +9,14 @@ import {
 } from "react-router-dom";
 import SearchPage from "./pages/SearchPage";
 import SharePage from "./pages/SharePage";
+import KsLoginModal from "./components/KsLoginModal";
 
-function App() {
+const App = () => {
+  const [isLogged, setIsLogged] = useState(false);
+
   return (
     <div className="App">
+      <KsLoginModal isOpen={!isLogged} loginCallback={() => setIsLogged(true)} />
       <Router>
         <KsNavbar />
         <Switch>
