@@ -1,9 +1,10 @@
 import React from 'react';
-
+import KsKitGrid from "../../components/KsKitGrid";
+import dataMock from "../../dataMock";
 
 const SharePage = () =>
   <>
-    <h1>Share</h1>
+    <KsKitGrid data={dataMock.content} />
   </>;
 
 export default SharePage;

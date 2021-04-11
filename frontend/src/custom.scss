@@ -1,4 +1,24 @@
 $theme-colors: ("primary": #1A73E8,
 );
 
+.bg-method {
+  background-color: #B50099 !important;
+}
+
+.bg-indicator {
+  background-color: #AAAAAA !important;
+}
+
+.bg-learning {
+  background-color: #E7AE0C !important;
+}
+
+.bg-model {
+  background-color: #F78104 !important;
+}
+
+.bg-system {
+  background-color: #2FCAAA !important;
+}
+
 @import '~bootstrap/scss/bootstrap.scss';
