@@ -20,7 +20,7 @@ const KsLoginModal = ({ isOpen, loginCallback }) => (
       </Form>
     </ModalBody>
     <ModalFooter>
-      <Button color="primary" onClick={loginCallback}>Login</Button>{' '}
+      <Button color="primary" onClick={loginCallback}>Login</Button>
     </ModalFooter>
   </Modal>
 );
