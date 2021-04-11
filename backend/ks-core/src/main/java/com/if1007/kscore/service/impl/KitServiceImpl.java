@@ -34,8 +34,15 @@ public class KitServiceImpl implements KitService {
     }
 
     @Override
-    public Content getById(IRequestContext context) {
-        return null;
+    public Content getById(IRequestContext context, String id) {
+        log.info("Iniciando busca de Kit no Strateegia por ID");
+        try {
+            var token = storage.get(context.getCorrelationId());
+            return kitClient.getById(token, id);
+        } catch (Exception e){
+            log.error("Erro ao se comunicar com api do Strateegia", e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
