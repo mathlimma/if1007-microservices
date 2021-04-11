@@ -6,7 +6,6 @@ import com.if1007.kscore.dto.response.Content;
 import com.if1007.kscore.dto.response.KitResponse;
 import com.if1007.kscore.service.KitService;
 import com.if1007.kscore.store.Storage;
-import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -26,7 +25,9 @@ public class KitServiceImpl implements KitService {
         log.info("Iniciando busca de Kits no Strateegia");
         try {
             var token = storage.get(context.getCorrelationId());
-            return kitClient.getAllKits(token, false);
+            var response = kitClient.getAllKits(token, false);
+            storage.delete(context.getCorrelationId());
+            return response;
         } catch (Exception e){
             log.error("Erro ao se comunicar com api do Strateegia", e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -38,7 +39,9 @@ public class KitServiceImpl implements KitService {
         log.info("Iniciando busca de Kit no Strateegia por ID");
         try {
             var token = storage.get(context.getCorrelationId());
-            return kitClient.getById(token, id);
+            var response = kitClient.getById(token, id);
+            storage.delete(context.getCorrelationId());
+            return response;
         } catch (Exception e){
             log.error("Erro ao se comunicar com api do Strateegia", e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
