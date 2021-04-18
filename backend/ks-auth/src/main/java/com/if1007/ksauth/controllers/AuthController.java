@@ -1,6 +1,6 @@
 package com.if1007.ksauth.controllers;
 
-import com.if1007.ksauth.entities.User;
+import com.if1007.ksauth.DTO.User;
 import com.if1007.ksauth.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

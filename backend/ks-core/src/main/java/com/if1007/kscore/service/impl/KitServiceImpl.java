@@ -48,4 +48,16 @@ public class KitServiceImpl implements KitService {
         }
     }
 
+    @Override
+    public void shareKit(String id) {
+        log.info("Adicionando Kit id no tópico de kit-analysis do kafka");
+        try {
+            log.info("Adiciona no tópico com sucesso");
+
+        } catch (Exception e){
+            log.error("Erro ao adicionar id no tópico do kafka", e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

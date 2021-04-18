@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/backend/ks-auth/ks-auth.iml" filepath="$PROJECT_DIR$/backend/ks-auth/ks-auth.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/microsservices-project.iml" filepath="$PROJECT_DIR$/.idea/microsservices-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ms-shared-kits.iml" filepath="$PROJECT_DIR$/.idea/ms-shared-kits.iml" />
     </modules>
   </component>
 </project>

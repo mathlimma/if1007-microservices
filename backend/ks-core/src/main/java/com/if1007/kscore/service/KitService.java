@@ -7,4 +7,5 @@ import com.if1007.kscore.dto.response.KitResponse;
 public interface KitService {
     KitResponse getAll(IRequestContext context);
     Content getById(IRequestContext context, String id);
+    void shareKit(String id);
 }

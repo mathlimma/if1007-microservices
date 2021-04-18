@@ -35,4 +35,12 @@ public class KitsController {
         return ResponseEntity.ok(response);
     }
 
+    @PostMapping("{id}")
+    public ResponseEntity.BodyBuilder shareKit(@PathVariable("id") String kitId){
+        log.info("Nova requisição compartilhando o kit com Id: {}", kitId);
+        kitService.shareKit(kitId);
+        log.info("Kit compartilhado com sucesso");
+        return ResponseEntity.ok();
+    }
+
 }
