@@ -1,7 +1,7 @@
 package com.if1007.kscore.interceptor;
 
 import com.if1007.kscore.context.impl.RequestContext;
-import com.if1007.kscore.store.Storage;
+import com.if1007.kscore.storage.Storage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

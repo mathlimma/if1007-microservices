@@ -1,4 +1,4 @@
-package com.if1007.kscore.store;
+package com.if1007.kscore.storage;
 
 import java.util.HashMap;
 import java.util.Map;

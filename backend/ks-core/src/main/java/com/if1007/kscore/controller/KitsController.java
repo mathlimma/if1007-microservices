@@ -1,6 +1,9 @@
 package com.if1007.kscore.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.if1007.kscore.context.IRequestContext;
+import com.if1007.kscore.dto.request.KitRequest;
 import com.if1007.kscore.dto.response.Content;
 import com.if1007.kscore.dto.response.KitResponse;
 import com.if1007.kscore.service.KitService;
@@ -20,7 +23,7 @@ public class KitsController {
     private final KitService kitService;
 
     @GetMapping
-    public ResponseEntity<KitResponse> getAll(@RequestAttribute("context") IRequestContext context){
+    public ResponseEntity<KitResponse> getAll(@RequestAttribute("context") IRequestContext context) {
         log.info("Nova requisição buscar todos os kits. Correlation ID: {}", context.getCorrelationId());
         var response = kitService.getAll(context);
         log.info("Kits encontrados com sucesso");
@@ -28,7 +31,7 @@ public class KitsController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Content> getById(@RequestAttribute("context") IRequestContext context, @PathVariable("id") String kitId){
+    public ResponseEntity<Content> getById(@RequestAttribute("context") IRequestContext context, @PathVariable("id") String kitId) {
         log.info("Nova requisição buscar kit por Id. Correlation ID: {}", context.getCorrelationId());
         var response = kitService.getById(context, kitId);
         log.info("Kit encontrado com sucesso");
@@ -36,11 +39,27 @@ public class KitsController {
     }
 
     @PostMapping("{id}")
-    public ResponseEntity.BodyBuilder shareKit(@PathVariable("id") String kitId){
+    public ResponseEntity<?> shareKit(@PathVariable("id") String kitId) {
         log.info("Nova requisição compartilhando o kit com Id: {}", kitId);
         kitService.shareKit(kitId);
         log.info("Kit compartilhado com sucesso");
-        return ResponseEntity.ok();
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping
+    public ResponseEntity<?> saveKit(@RequestAttribute("context") IRequestContext context, @RequestBody KitRequest kitRequest) throws JsonProcessingException {
+        log.info("Nova requisição salvando o kit compartilhado");
+        var response = kitService.saveKit(context, kitRequest);
+        log.info("Kit salvo com sucesso");
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deleteKit(@PathVariable("id") String kitId) {
+        log.info("Nova requisição deletando o kit com Id: {}", kitId);
+        kitService.deleteKit(kitId);
+        log.info("Kit deletado com sucesso");
+        return ResponseEntity.ok().build();
     }
 
 }

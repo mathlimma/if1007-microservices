@@ -1,6 +1,6 @@
 package com.if1007.kscore.config;
 
-import com.if1007.kscore.store.Storage;
+import com.if1007.kscore.storage.Storage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
