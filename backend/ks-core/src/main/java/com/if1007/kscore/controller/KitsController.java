@@ -1,7 +1,6 @@
 package com.if1007.kscore.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.if1007.kscore.context.IRequestContext;
 import com.if1007.kscore.dto.request.KitRequest;
 import com.if1007.kscore.dto.response.Content;

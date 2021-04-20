@@ -1,0 +1,25 @@
+api:
+  strateegia:
+    kits: https://api.strateegia.digital/kits/v1/kit
+
+server:
+  port: 8082
+  servlet:
+    context-path: /ks-analysis/api/v1
+
+spring:
+  datasource:
+    password: admin
+    url: jdbc:h2:mem:db_kscore
+    username: admin
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+

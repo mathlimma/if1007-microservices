@@ -4,6 +4,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/backend/ks-auth/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/ks-core/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/ks-analysis/pom.xml" />
       </list>
     </option>
   </component>
