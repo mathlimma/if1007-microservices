@@ -38,9 +38,9 @@ public class KitsController {
     }
 
     @PostMapping("{id}")
-    public ResponseEntity<?> shareKit(@PathVariable("id") String kitId) {
+    public ResponseEntity<?> shareKit(@RequestAttribute("context") IRequestContext context, @PathVariable("id") String kitId) {
         log.info("Nova requisição compartilhando o kit com Id: {}", kitId);
-        kitService.shareKit(kitId);
+        kitService.shareKit(context, kitId);
         log.info("Kit compartilhado com sucesso");
         return ResponseEntity.ok().build();
     }
