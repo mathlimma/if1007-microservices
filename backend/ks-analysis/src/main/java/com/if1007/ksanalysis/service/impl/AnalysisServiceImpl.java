@@ -1,5 +1,6 @@
 package com.if1007.ksanalysis.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.if1007.ksanalysis.dto.Content;
 import com.if1007.ksanalysis.service.AnalysisService;
 import lombok.RequiredArgsConstructor;
@@ -13,13 +14,14 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class AnalysisServiceImpl implements AnalysisService {
 
-    //private final KitClient kitClient;
+    private final ObjectMapper mapper;
 
     @Override
-    public Content getById(String id) {
-        log.info("Iniciando busca de Kit no ks-core");
+    public Content getById(String content) {
+        log.info("Iniciando analise de kit");
         try {
-            //TODO: buscar kit via ks-core
+            var dto = mapper.readValue(content, Content.class);
+            log.info("Analizando kit com id: {}", dto.getId());
             return null;
         } catch (Exception e) {
             log.error("Erro ao se comunicar com ks-core", e);

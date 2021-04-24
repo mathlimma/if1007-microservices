@@ -28,8 +28,8 @@ public class ShareKitStreamConsumer {
                 .foreach((key, value) -> this.analyseKit(value));
     }
 
-    private void analyseKit(String id) {
-       log.info("Analisando kit com id: {}", id);
-       var response = analysisService.getById(id);
+    private void analyseKit(String content) {
+       log.info("Analisando kit: {}", content);
+       var response = analysisService.getById(content);
     }
 }

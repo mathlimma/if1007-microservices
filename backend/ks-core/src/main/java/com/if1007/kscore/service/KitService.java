@@ -9,6 +9,6 @@ public interface KitService {
     KitResponse getAll(IRequestContext context);
     Content getById(IRequestContext context, String id);
     Content saveKit(IRequestContext context, KitRequest kitRequest);
-    void shareKit(String id);
+    void shareKit(IRequestContext context, String id);
     void deleteKit(String id);
 }

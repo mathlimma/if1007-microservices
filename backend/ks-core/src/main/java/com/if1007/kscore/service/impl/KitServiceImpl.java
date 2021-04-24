@@ -66,10 +66,10 @@ public class KitServiceImpl implements KitService {
     }
 
     @Override
-    public void shareKit(String id) {
+    public void shareKit(IRequestContext context, String id) {
         log.info("Adicionando Kit com id: {}, no tópico de kit-analysis do kafka", id);
         try {
-            kafkaKitSharedProducer.sendSharedKit(id);
+            kafkaKitSharedProducer.sendSharedKit(getById(context, id));
             log.info("Adiciona no tópico com sucesso");
         } catch (Exception e) {
             log.error("Erro ao adicionar id no tópico do kafka", e);
