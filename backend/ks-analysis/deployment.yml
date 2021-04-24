@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ks-analysis
+spec:
+  selector:
+    matchLabels:
+      app: ks-analysis
+  template:
+    metadata:
+      labels:
+        app: ks-analysis
+    spec:
+      containers:
+      - name: ks-analysis
+        image: "mathlimma/ks-analysis"
+        ports:
+        - containerPort: 8082
