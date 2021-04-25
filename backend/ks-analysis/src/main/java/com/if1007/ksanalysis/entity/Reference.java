@@ -16,10 +16,6 @@ public class Reference {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name="kit_id")
-    private Kit kit;
-
     private String description;
     private String url;
 }

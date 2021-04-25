@@ -15,8 +15,4 @@ public class Question {
     private String id;
 
     private String question;
-
-    @ManyToOne
-    @JoinColumn(name="kit_id")
-    private Kit kit;
 }
