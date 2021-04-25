@@ -20,9 +20,9 @@ public class SearchController {
     private final SearchService searchService;
 
     @GetMapping
-    public ResponseEntity<List<Content>> searchKits(@RequestParam String name) {
-        log.info("Nova requisição pesquisar todos os kits com nome: {}", name);
-        var response = searchService.findByName(name);
+    public ResponseEntity<List<Content>> searchKits(@RequestParam String title) {
+        log.info("Nova requisição pesquisar todos os kits com nome: {}", title);
+        var response = searchService.findByTitle(title);
         log.info("A consulta foi executada com sucesso");
         return ResponseEntity.ok(response);
     }
