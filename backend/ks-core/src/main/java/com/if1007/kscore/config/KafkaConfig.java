@@ -33,7 +33,7 @@ public class KafkaConfig {
         configProps.put(
                 ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class); // Serializer for key
         configProps.put(
-                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class); // Serializer for value
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class); // Serializer for value
         configProps.put(
                 JsonSerializer.ADD_TYPE_INFO_HEADERS,
                 false); // Package name of value won't be added to header with this config

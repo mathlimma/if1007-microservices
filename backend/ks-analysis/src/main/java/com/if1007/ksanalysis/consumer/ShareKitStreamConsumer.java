@@ -30,6 +30,6 @@ public class ShareKitStreamConsumer {
 
     private void analyseKit(String content) {
        log.info("Analisando kit: {}", content);
-       var response = analysisService.getById(content);
+       var response = analysisService.analyseSharedKit(content);
     }
 }

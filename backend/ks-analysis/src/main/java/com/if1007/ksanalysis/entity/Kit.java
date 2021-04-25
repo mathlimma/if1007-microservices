@@ -17,9 +17,11 @@ public class Kit {
     private String id;
 
     @OneToMany
+    @JoinColumn(name = "kit_id", nullable = false)
     private List<Question> questions;
 
     @OneToMany
+    @JoinColumn(name = "kit_id", nullable = false)
     private List<Reference> references;
 
     private String description;

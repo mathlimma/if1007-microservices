@@ -19,7 +19,7 @@ public class KafkaKitSharedProducer {
 
     public void sendSharedKit(Content content){
         try {
-            var contentJson = mapper.writeValueAsString(mapper);
+            var contentJson = mapper.writeValueAsString(content);
             log.info("Enviando Kit compartilhado: {}, para Análise via Kafka", contentJson);
             sharedKitsKafkaTemplate.send("kit.share", contentJson);
         } catch (Exception e){

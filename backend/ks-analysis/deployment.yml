@@ -16,3 +16,4 @@ spec:
         image: "mathlimma/ks-analysis"
         ports:
         - containerPort: 8082
+        
