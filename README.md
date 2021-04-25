@@ -20,3 +20,7 @@ Membros: - Matheus Lima
          - Geraldo Medeiros
          - Hitallo Cavalcanti
         
+
+
+arquivo que salvou p configurar o kafka:
+https://itnext.io/kafka-on-kubernetes-the-strimzi-way-part-1-bdff3e451788
