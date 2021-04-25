@@ -1,8 +1,11 @@
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: kafka-broker0
 spec:
+  selector:
+    matchLabels:
+      app: kafka
   template:
     metadata:
       labels:
@@ -18,7 +21,7 @@ spec:
         - name: KAFKA_ADVERTISED_PORT
           value: "30718"
         - name: KAFKA_ADVERTISED_HOST_NAME
-          value: 104.198.231.190
+          value: 35.222.217.205
         - name: KAFKA_ZOOKEEPER_CONNECT
           value: zoo1:2181
         - name: KAFKA_BROKER_ID
