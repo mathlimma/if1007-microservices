@@ -29,7 +29,7 @@ public class KafkaConfig {
     public ProducerFactory<String, String> sharedKitsProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(
-                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092"); // Destination of kafka brokers
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "35.222.217.205:9094"); // Destination of kafka brokers
         configProps.put(
                 ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class); // Serializer for key
         configProps.put(

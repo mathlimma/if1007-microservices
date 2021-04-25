@@ -20,7 +20,7 @@ public class KafkaConfig {
     @Bean
     KafkaStreamsConfiguration defaultKafkaStreamsConfig() {
         Map<String, Object> configs = new HashMap<>();
-        configs.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        configs.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "35.222.217.205:9094");
         configs.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         configs.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, JsonSerde.class);
         configs.put(StreamsConfig.APPLICATION_ID_CONFIG, "ks-analysis");
