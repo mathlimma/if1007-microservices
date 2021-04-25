@@ -3,9 +3,7 @@ package com.if1007.ksanalysis.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Table(name = "tb_question")
@@ -17,4 +15,8 @@ public class Question {
     private String id;
 
     private String question;
+
+    @ManyToOne
+    @JoinColumn(name="kit_id")
+    private Kit kit;
 }

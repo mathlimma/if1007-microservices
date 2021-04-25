@@ -16,10 +16,10 @@ public class Kit {
     @Id
     private String id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "kit", cascade = CascadeType.ALL)
     private List<Question> questions;
 
-    @OneToMany
+    @OneToMany(mappedBy = "kit", cascade = CascadeType.ALL)
     private List<Reference> references;
 
     private String description;
