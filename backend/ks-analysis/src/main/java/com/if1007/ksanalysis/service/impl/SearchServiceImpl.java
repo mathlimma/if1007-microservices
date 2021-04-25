@@ -6,7 +6,6 @@ import com.if1007.ksanalysis.service.SearchService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -28,9 +27,12 @@ public class SearchServiceImpl implements SearchService {
         try {
             var kits = kitRepository.findByTitle(title)
                     .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
-            return kits.stream()
+
+            var kitsDTO =  kits.stream()
                     .map(kit-> modelMapper.map(kit, Content.class))
                     .collect(Collectors.toList());
+            log.info("kits retornados com sucesso");
+            return kitsDTO;
         } catch (Exception e) {
             log.error("Erro ao se comunicar com banco de dados", e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
