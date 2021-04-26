@@ -16,10 +16,6 @@ spring:
     console:
       enabled: true
       path: /h2-console
-  kafka:
-    producer:
-      bootstrap-servers: 35.222.217.205:9094
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
 
 

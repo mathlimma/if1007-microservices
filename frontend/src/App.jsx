@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './App.scss';
 import KsNavbar from './components/KsNavbar';
 import {
@@ -10,9 +10,24 @@ import {
 import SearchPage from "./pages/SearchPage";
 import SharePage from "./pages/SharePage";
 import KsLoginModal from "./components/KsLoginModal";
+import axios from "./services/axios";
+
 
 const App = () => {
   const [token, setToken] = useState();
+
+  useEffect(() => {
+    if (token) {
+      axios.get('/ks-core/api/v1/kits', {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      }).then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
+  }, [token]);
+
+
 
   return (
     <div className="App">
