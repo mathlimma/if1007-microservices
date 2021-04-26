@@ -12,11 +12,11 @@ import SharePage from "./pages/SharePage";
 import KsLoginModal from "./components/KsLoginModal";
 
 const App = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [token, setToken] = useState();
 
   return (
     <div className="App">
-      <KsLoginModal isOpen={!isLogged} loginCallback={() => setIsLogged(true)} />
+      <KsLoginModal isOpen={!token} loginCallback={(tkn) => setToken(tkn)} />
       <Router>
         <KsNavbar />
         <Switch>
