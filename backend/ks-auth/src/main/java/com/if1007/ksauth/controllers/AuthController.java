@@ -13,12 +13,11 @@ public class AuthController {
     @Autowired
     private AuthService service;
 
+    @CrossOrigin
     @PostMapping("/")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> authenticateUser(@RequestBody User user){
-        //AuthCredentials credentials = service.authenticate(user.getEmail(), user.getPassword());
         String credentials = service.authenticate(user.getEmail(), user.getPassword());
-
         return ResponseEntity.ok(credentials);
     }
 }

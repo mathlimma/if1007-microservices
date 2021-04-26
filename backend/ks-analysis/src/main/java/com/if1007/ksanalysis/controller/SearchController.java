@@ -12,6 +12,7 @@ import java.util.List;
 import static com.if1007.ksanalysis.PathsConstants.SEARCH_PATH;
 
 @Slf4j
+@CrossOrigin
 @RestController
 @RequestMapping(SEARCH_PATH)
 @RequiredArgsConstructor

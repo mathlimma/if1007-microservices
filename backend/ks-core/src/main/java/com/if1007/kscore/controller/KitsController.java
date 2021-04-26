@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import static com.if1007.kscore.PathsConstants.KITS_PATH;
 
 @Slf4j
+@CrossOrigin
 @RestController
 @RequestMapping(KITS_PATH)
 @RequiredArgsConstructor
