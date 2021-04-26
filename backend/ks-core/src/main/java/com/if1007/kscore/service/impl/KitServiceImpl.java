@@ -1,18 +1,24 @@
 package com.if1007.kscore.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.if1007.kscore.client.KitClient;
+import com.if1007.kscore.publisher.Publisher;
 import com.if1007.kscore.context.IRequestContext;
 import com.if1007.kscore.dto.request.KitRequest;
 import com.if1007.kscore.dto.response.Content;
 import com.if1007.kscore.dto.response.KitResponse;
-import com.if1007.kscore.messaging.producer.KafkaKitSharedProducer;
 import com.if1007.kscore.service.KitService;
 import com.if1007.kscore.storage.Storage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -21,7 +27,8 @@ public class KitServiceImpl implements KitService {
 
     private final Storage storage;
     private final KitClient kitClient;
-    private final KafkaKitSharedProducer kafkaKitSharedProducer;
+    @Autowired
+    Publisher publisher;
 
     @Override
     public KitResponse getAll(IRequestContext context) {
@@ -68,14 +75,20 @@ public class KitServiceImpl implements KitService {
     @Override
     public void shareKit(IRequestContext context, String id) {
         log.info("Adicionando Kit com id: {}, no tópico de kit-analysis do kafka", id);
+        Map<String, String> attributeMap = new HashMap<>();
         try {
-            kafkaKitSharedProducer.sendSharedKit(getById(context, id));
+            var content = getById(context, id);
+            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            String json = ow.writeValueAsString(content);
+            publisher.publishMessage(id, attributeMap , json );
             log.info("Adiciona no tópico com sucesso");
         } catch (Exception e) {
             log.error("Erro ao adicionar id no tópico do kafka", e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
     @Override
     public void deleteKit(String id) {
