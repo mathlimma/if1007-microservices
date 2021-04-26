@@ -12,7 +12,6 @@ import java.util.List;
 import static com.if1007.ksanalysis.PathsConstants.SEARCH_PATH;
 
 @Slf4j
-@CrossOrigin
 @RestController
 @RequestMapping(SEARCH_PATH)
 @RequiredArgsConstructor
@@ -20,6 +19,7 @@ public class SearchController {
 
     private final SearchService searchService;
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<Content>> searchKits(@RequestParam String title) {
         log.info("Nova requisição pesquisar todos os kits com nome: {}", title);
