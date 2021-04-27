@@ -12,9 +12,9 @@ import SharePage from "./pages/SharePage";
 import KsLoginModal from "./components/KsLoginModal";
 import axios from "./services/axios";
 
-
 const App = () => {
   const [token, setToken] = useState();
+  const [myKits, setMyKits] = useState([]);
 
   useEffect(() => {
     if (token) {
@@ -22,12 +22,10 @@ const App = () => {
         headers: {
           'Authorization': 'Bearer ' + token
         }
-      }).then(res => console.log(res))
+      }).then((res) => setMyKits(res.data.content))
         .catch(err => console.log(err));
     }
   }, [token]);
-
-
 
   return (
     <div className="App">
@@ -39,7 +37,7 @@ const App = () => {
             <SearchPage />
           </Route>
           <Route path="/share">
-            <SharePage />
+            <SharePage kits={myKits} />
           </Route>
           <Route path="/">
             <Redirect to="/share" />

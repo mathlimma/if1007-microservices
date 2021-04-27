@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import KsKitGrid from "../../components/KsKitGrid";
-import dataMock from "../../dataMock";
 import KsPaginator from '../../components/KsPaginator';
 import KsConfirmModal from "../../components/KsConfirmModal";
+import PropTypes from "prop-types";
 
-const SharePage = () => {
+const SharePage = ({ kits }) => {
   const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
+
   const onCardClick = () => {
     setDisplayConfirmModal(true);
   };
@@ -24,10 +25,14 @@ const SharePage = () => {
         text="Ele ficará disponível para todos os usuários da plataforma."
         closeCallback={onCardClickClose}
         confirmCallback={onCardClickConfirm} />
-      <KsKitGrid data={dataMock.content} itemOnClick={onCardClick} />
+      <KsKitGrid data={kits} itemOnClick={onCardClick} />
       <KsPaginator pagesNumber={1} currentPage={1} />
     </div>
   );
+};
+
+SharePage.propTypes = {
+  kits: PropTypes.array.isRequired,
 };
 
 export default SharePage;

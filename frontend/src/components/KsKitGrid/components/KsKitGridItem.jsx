@@ -59,7 +59,7 @@ const KsKitGridItem = ({ data, hasAnalysis, onClick }) => {
     <div
       className={`mb-4 col-12 ${hasAnalysis ? "col-md-6" : "col-md-3"}${onClick ? ' cursor-pointer' : ''}`}
       onClick={onClick}>
-      <Card>
+      <Card className="h-100">
         <CardBody>
           {renderCardContent()}
         </CardBody>

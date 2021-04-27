@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import KsKitGrid from "../../components/KsKitGrid";
-import dataMock from "../../dataMock";
 import KsConfirmModal from "../../components/KsConfirmModal";
 import { InputGroup, Input } from 'reactstrap';
 
 const SearchPage = () => {
   const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
+
   const onCardClick = () => {
     setDisplayConfirmModal(true);
   };
@@ -27,7 +27,7 @@ const SearchPage = () => {
         <Input placeholder="Procure kits compartilhados" />
       </InputGroup>
       <KsKitGrid
-        data={dataMock.content}
+        data={[]}
         hasAnalysis
         itemOnClick={onCardClick}
       />
