@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import KsKitGrid from "../../components/KsKitGrid";
 import KsConfirmModal from "../../components/KsConfirmModal";
 import { InputGroup, Input } from 'reactstrap';
+import axios from '../../services/axios';
 
 const SearchPage = () => {
   const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
+  const [query, setQuery] = useState("");
+  const [kits, setKits] = useState([]);
+
+  useEffect(() => {
+    const timeOutId = setTimeout(() =>
+      axios.get(`ks-analysis/api/v1/search?title=${query}`)
+        .then((res) => setKits(res.data))
+        .catch((err) => console.log(err))
+      , 500);
+    return () => clearTimeout(timeOutId);
+  }, [query]);
 
   const onCardClick = () => {
     setDisplayConfirmModal(true);
@@ -24,10 +36,10 @@ const SearchPage = () => {
         closeCallback={onCardClickClose}
         confirmCallback={onCardClickConfirm} />
       <InputGroup className="mt-5">
-        <Input placeholder="Procure kits compartilhados" />
+        <Input placeholder="Procure kits compartilhados" onChange={(event) => setQuery(event.target.value)} />
       </InputGroup>
       <KsKitGrid
-        data={[]}
+        data={kits}
         hasAnalysis
         itemOnClick={onCardClick}
       />
