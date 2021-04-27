@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import KsKitGrid from "../../components/KsKitGrid";
-import KsPaginator from '../../components/KsPaginator';
 import KsConfirmModal from "../../components/KsConfirmModal";
 import PropTypes from "prop-types";
 import axios from '../../services/axios';
@@ -33,7 +32,6 @@ const SharePage = ({ kits }) => {
         closeCallback={onCardClickClose}
         confirmCallback={onCardClickConfirm} />
       <KsKitGrid data={kits} itemOnClick={onCardClick} />
-      <KsPaginator pagesNumber={1} currentPage={1} />
     </div>
   );
 };

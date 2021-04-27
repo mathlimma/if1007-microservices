@@ -1,12 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useState } from "react";
 import {
   Card, CardFooter, CardBody, CardTitle,
 } from 'reactstrap';
 import PropTypes from "prop-types";
 
 const KsKitGridItem = ({ data, hasAnalysis, onClick }) => {
+  const [engajamento] = useState((Math.random() * 100).toFixed(1).toString());
+  const [discutibilidade] = useState((Math.random() * 5).toFixed(1).toString());
+  const [consenso] = useState((Math.random() * 50).toFixed(1).toString());
+
   const handleFooterClasses = () => {
     switch (data.type) {
       case "SYSTEM":
@@ -36,9 +40,15 @@ const KsKitGridItem = ({ data, hasAnalysis, onClick }) => {
             </div>
             <div className="col">
               <div>
-                <p>Análise 1 Mussum Ipsum</p>
-                <p>Análise 2 Mussum Ipsum, cacilds vidis </p>
-                <p>Análise 3 Mussum Ipsum, cacilds vidis litro abertis.</p>
+                <p>Engajamento:{" "}
+                  <span className="font-weight-bold">{engajamento}%</span>
+                </p>
+                <p>Discutibilidade:{" "}
+                  <span className="font-weight-bold">{discutibilidade}</span>
+                </p>
+                <p>Consenso:{" "}
+                  <span className="font-weight-bold">{consenso}</span>
+                </p>
               </div>
             </div>
           </>
@@ -52,6 +62,15 @@ const KsKitGridItem = ({ data, hasAnalysis, onClick }) => {
           </div>
         )}
       </div>
+      {hasAnalysis && (
+        <>
+          <div className="col">
+            <div className="text-center">
+              <p>{data.description}</p>
+            </div>
+          </div>
+        </>
+      )}
     </div >
   );
 

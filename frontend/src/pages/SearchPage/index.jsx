@@ -11,7 +11,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     const timeOutId = setTimeout(() =>
-      axios.get(`ks-analysis/api/v1/search?title=${query}`)
+      axios.get(`ks-analysis/api/v1/search?word=${query}`)
         .then((res) => setKits(res.data))
         .catch((err) => console.log(err))
       , 500);
