@@ -21,9 +21,9 @@ public class SearchController {
 
     @CrossOrigin
     @GetMapping
-    public ResponseEntity<List<Content>> searchKits(@RequestParam String title) {
-        log.info("Nova requisição pesquisar todos os kits com nome: {}", title);
-        var response = searchService.findByTitle(title);
+    public ResponseEntity<List<Content>> searchKits(@RequestParam String word) {
+        log.info("Nova requisição pesquisar todos os kits com nome: {}", word);
+        var response = searchService.findByWord(word);
         log.info("A consulta foi executada com sucesso");
         return ResponseEntity.ok(response);
     }

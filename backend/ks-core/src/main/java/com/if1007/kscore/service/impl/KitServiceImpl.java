@@ -35,7 +35,7 @@ public class KitServiceImpl implements KitService {
         log.info("Iniciando busca de Kits no Strateegia");
         try {
             var token = storage.get(context.getCorrelationId());
-            var response = kitClient.getAllKits(token, false);
+            var response = kitClient.getAllKits(token);
             storage.delete(context.getCorrelationId());
             return response;
         } catch (Exception e) {
