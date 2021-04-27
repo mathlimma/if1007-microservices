@@ -13,23 +13,25 @@ import KsLoginModal from "./components/KsLoginModal";
 import axios from "./services/axios";
 
 const App = () => {
-  const [token, setToken] = useState();
+  const [isLogged, setIsLogged] = useState();
   const [myKits, setMyKits] = useState([]);
 
   useEffect(() => {
-    if (token) {
-      axios.get('/ks-core/api/v1/kits', {
-        headers: {
-          'Authorization': 'Bearer ' + token
-        }
-      }).then((res) => setMyKits(res.data.content))
+    if (isLogged) {
+      axios.get('/ks-core/api/v1/kits')
+        .then((res) => setMyKits(res.data.content))
         .catch(err => console.log(err));
     }
-  }, [token]);
+  }, [isLogged]);
+
+  const handleLogin = (token) => {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    setIsLogged(true);
+  };
 
   return (
     <div className="App">
-      <KsLoginModal isOpen={!token} loginCallback={(tkn) => setToken(tkn)} />
+      <KsLoginModal isOpen={!isLogged} loginCallback={(token) => handleLogin(token)} />
       <Router>
         <KsNavbar />
         <Switch>
