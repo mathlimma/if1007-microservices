@@ -3,17 +3,24 @@ import KsKitGrid from "../../components/KsKitGrid";
 import KsPaginator from '../../components/KsPaginator';
 import KsConfirmModal from "../../components/KsConfirmModal";
 import PropTypes from "prop-types";
+import axios from '../../services/axios';
 
 const SharePage = ({ kits }) => {
   const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
+  const [clickedId, setClickedId] = useState(null);
 
-  const onCardClick = () => {
+  const onCardClick = (id) => {
+    setClickedId(id);
     setDisplayConfirmModal(true);
   };
 
-  const onCardClickConfirm = () => { };
+  const onCardClickConfirm = () => {
+    axios.post(`/ks-core/api/v1/kits/${clickedId}`)
+      .then((res) => console.log(res));
+  };
 
   const onCardClickClose = () => {
+    setClickedId(null);
     setDisplayConfirmModal(false);
   };
 

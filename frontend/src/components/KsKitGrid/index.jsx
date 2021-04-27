@@ -10,7 +10,7 @@ const KsKitGrid = ({ data, hasAnalysis, itemOnClick }) => {
           <KitGridItem
             hasAnalysis={hasAnalysis}
             data={item}
-            onClick={itemOnClick}
+            onClick={() => itemOnClick(item.id)}
             key={item.id}
           />)}
       </div>
