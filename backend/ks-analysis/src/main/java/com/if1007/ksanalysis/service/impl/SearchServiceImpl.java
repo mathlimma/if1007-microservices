@@ -25,8 +25,7 @@ public class SearchServiceImpl implements SearchService {
     public List<Content> findByTitle(String title){
         log.info("Iniciando busca no banco de dados");
         try {
-            var kits = kitRepository.findByTitle(title)
-                    .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+            var kits = kitRepository.findByTitle(title);
 
             var kitsDTO =  kits.stream()
                     .map(kit-> modelMapper.map(kit, Content.class))
@@ -37,6 +36,34 @@ public class SearchServiceImpl implements SearchService {
             log.error("Erro ao se comunicar com banco de dados", e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public List<Content> findByDescription(String description){
+        log.info("Iniciando busca no banco de dados");
+        try {
+            var kits = kitRepository.findByDescription(description);
+
+            var kitsDTO =  kits.stream()
+                    .map(kit-> modelMapper.map(kit, Content.class))
+                    .collect(Collectors.toList());
+            log.info("kits retornados com sucesso");
+            return kitsDTO;
+        } catch (Exception e) {
+            log.error("Erro ao se comunicar com banco de dados", e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Override
+    public List<Content> findByWord(String word) {
+        var wordByTitle = findByTitle(word);
+        var wordByDescription = findByDescription(word);
+
+        wordByTitle.removeIf(k->wordByDescription.stream().anyMatch(t->k.getId().equals(t.getId())));
+
+        wordByTitle.addAll(wordByDescription);
+
+        return wordByTitle;
     }
 
 }

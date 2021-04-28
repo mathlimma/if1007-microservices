@@ -16,10 +16,11 @@ spring:
     console:
       enabled: true
       path: /h2-console
-  kafka:
-    producer:
-      bootstrap-servers: 35.222.217.205:9094
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
+  cloud:
+    gcp:
+      project-id: "if1007-kit-share"
+      credentials:
+        location: classpath:if1007-kit-share-13e6d5f70108.json
+pubsub:
+  subscription: projects/if1007-kit-share/subscriptions/kit.share
 

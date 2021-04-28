@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(value = "kits", url = "${api.strateegia.kits}")
 public interface KitClient {
     @GetMapping
-    KitResponse getAllKits(@RequestHeader("Authorization") String authorization, @RequestParam("paged") Boolean paged);
+    KitResponse getAllKits(@RequestHeader("Authorization") String authorization);
 
     @GetMapping("{id}")
     Content getById(@RequestHeader("Authorization") String authorization, @PathVariable("id") String id);

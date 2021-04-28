@@ -26,7 +26,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         var token = request.getHeader("Authorization");
 
-        if (isBlank(token)) {
+        if (!request.getMethod().equalsIgnoreCase("options") && isBlank(token)) {
             log.info("Token não enviado");
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
