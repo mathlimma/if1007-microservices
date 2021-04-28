@@ -21,6 +21,6 @@ spring:
       project-id: 'if1007-kit-share'
       credentials:
         location: classpath:if1007-kit-share-13e6d5f70108.json
-pubsub:
-  subscription:  projects/if1007-kit-share/subscriptions/kit.share
-  topic: "kit.share"
+  pubsub:
+    subscription:  projects/if1007-kit-share/subscriptions/kit.share
+    topic: "kit.share"

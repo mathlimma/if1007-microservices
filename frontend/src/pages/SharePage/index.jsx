@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import KsKitGrid from "../../components/KsKitGrid";
-import dataMock from "../../dataMock";
-import KsPaginator from '../../components/KsPaginator';
 import KsConfirmModal from "../../components/KsConfirmModal";
+import PropTypes from "prop-types";
+import axios from '../../services/axios';
 
-const SharePage = () => {
+const SharePage = ({ kits }) => {
   const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
-  const onCardClick = () => {
+  const [clickedId, setClickedId] = useState(null);
+
+  const onCardClick = (id) => {
+    setClickedId(id);
     setDisplayConfirmModal(true);
   };
 
-  const onCardClickConfirm = () => { };
+  const onCardClickConfirm = () => {
+    axios.post(`/ks-core/api/v1/kits/${clickedId}`)
+      .then((res) => console.log(res));
+  };
 
   const onCardClickClose = () => {
+    setClickedId(null);
     setDisplayConfirmModal(false);
   };
 
@@ -24,10 +31,13 @@ const SharePage = () => {
         text="Ele ficará disponível para todos os usuários da plataforma."
         closeCallback={onCardClickClose}
         confirmCallback={onCardClickConfirm} />
-      <KsKitGrid data={dataMock.content} itemOnClick={onCardClick} />
-      <KsPaginator pagesNumber={1} currentPage={1} />
+      <KsKitGrid data={kits} itemOnClick={onCardClick} />
     </div>
   );
+};
+
+SharePage.propTypes = {
+  kits: PropTypes.array.isRequired,
 };
 
 export default SharePage;

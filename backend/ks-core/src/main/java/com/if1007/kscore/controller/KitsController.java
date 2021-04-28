@@ -21,7 +21,6 @@ public class KitsController {
 
     private final KitService kitService;
 
-    @CrossOrigin
     @GetMapping
     public ResponseEntity<KitResponse> getAll(@RequestAttribute("context") IRequestContext context) {
         log.info("Nova requisição buscar todos os kits. Correlation ID: {}", context.getCorrelationId());
@@ -30,7 +29,6 @@ public class KitsController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin
     @GetMapping("{id}")
     public ResponseEntity<Content> getById(@RequestAttribute("context") IRequestContext context, @PathVariable("id") String kitId) {
         log.info("Nova requisição buscar kit por Id. Correlation ID: {}", context.getCorrelationId());
@@ -39,7 +37,6 @@ public class KitsController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin
     @PostMapping("{id}")
     public ResponseEntity<?> shareKit(@RequestAttribute("context") IRequestContext context, @PathVariable("id") String kitId) {
         log.info("Nova requisição compartilhando o kit com Id: {}", kitId);
@@ -48,7 +45,6 @@ public class KitsController {
         return ResponseEntity.ok().build();
     }
 
-    @CrossOrigin
     @PostMapping
     public ResponseEntity<?> saveKit(@RequestAttribute("context") IRequestContext context, @RequestBody KitRequest kitRequest) throws JsonProcessingException {
         log.info("Nova requisição salvando o kit compartilhado");
@@ -57,7 +53,6 @@ public class KitsController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteKit(@PathVariable("id") String kitId) {
         log.info("Nova requisição deletando o kit com Id: {}", kitId);
