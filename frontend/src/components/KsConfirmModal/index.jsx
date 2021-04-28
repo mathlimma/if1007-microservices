@@ -3,7 +3,7 @@ import {
   Button, Modal, ModalHeader, ModalBody, ModalFooter,
 } from 'reactstrap';
 
-const KsConfirmModal = ({ isOpen, confirmCallback, closeCallback, title, text }) => {
+const KsConfirmModal = ({ isOpen, confirmCallback, closeCallback, title, text, canCancel }) => {
   const confirm = () => {
     confirmCallback();
     closeCallback();
@@ -17,7 +17,7 @@ const KsConfirmModal = ({ isOpen, confirmCallback, closeCallback, title, text })
       </ModalBody>
       <ModalFooter>
         <Button color="primary" onClick={confirm}>Confirmar</Button>
-        <Button onClick={closeCallback}>Cancelar</Button>
+        {canCancel && <Button onClick={closeCallback}>Cancelar</Button>}
       </ModalFooter>
     </Modal>
   );
@@ -30,11 +30,13 @@ KsConfirmModal.propTypes = {
   closeCallback: PropTypes.func.isRequired,
   title: PropTypes.string,
   text: PropTypes.string,
+  canCancel: PropTypes.bool,
 };
 
 KsConfirmModal.defaultTypes = {
   title: "",
   text: "",
+  canCancel: true,
 };
 
 export default KsConfirmModal;

@@ -6,6 +6,7 @@ import axios from '../../services/axios';
 
 const SharePage = ({ kits }) => {
   const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
+  const [displaySuccessModal, setDisplaySuccessModal] = useState(false);
   const [clickedId, setClickedId] = useState(null);
 
   const onCardClick = (id) => {
@@ -15,12 +16,16 @@ const SharePage = ({ kits }) => {
 
   const onCardClickConfirm = () => {
     axios.post(`/ks-core/api/v1/kits/${clickedId}`)
-      .then((res) => console.log(res));
+      .then(() => setDisplaySuccessModal(true));
   };
 
   const onCardClickClose = () => {
     setClickedId(null);
     setDisplayConfirmModal(false);
+  };
+
+  const onSuccessClickClose = () => {
+    setDisplaySuccessModal(false);
   };
 
   return (
@@ -31,6 +36,11 @@ const SharePage = ({ kits }) => {
         text="Ele ficará disponível para todos os usuários da plataforma."
         closeCallback={onCardClickClose}
         confirmCallback={onCardClickConfirm} />
+      <KsConfirmModal
+        isOpen={displaySuccessModal}
+        title="Kit compartilhado com sucesso!"
+        closeCallback={onSuccessClickClose}
+        confirmCallback={() => null} />
       <KsKitGrid data={kits} itemOnClick={onCardClick} />
     </div>
   );

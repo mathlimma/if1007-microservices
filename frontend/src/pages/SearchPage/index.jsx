@@ -6,6 +6,7 @@ import axios from '../../services/axios';
 
 const SearchPage = () => {
   const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
+  const [displaySuccessModal, setDisplaySuccessModal] = useState(false);
   const [query, setQuery] = useState("");
   const [kits, setKits] = useState([]);
 
@@ -22,10 +23,16 @@ const SearchPage = () => {
     setDisplayConfirmModal(true);
   };
 
-  const onCardClickConfirm = () => { };
+  const onCardClickConfirm = () => {
+    setDisplaySuccessModal(true);
+  };
 
   const onCardClickClose = () => {
     setDisplayConfirmModal(false);
+  };
+
+  const onSuccessClickClose = () => {
+    setDisplaySuccessModal(false);
   };
 
   return (
@@ -35,6 +42,11 @@ const SearchPage = () => {
         title="Você tem certeza que quer adicionar esse kit?"
         closeCallback={onCardClickClose}
         confirmCallback={onCardClickConfirm} />
+      <KsConfirmModal
+        isOpen={displaySuccessModal}
+        title="Kit salvo com sucesso!"
+        closeCallback={onSuccessClickClose}
+        confirmCallback={() => null} />
       <InputGroup className="mt-5">
         <Input placeholder="Procure kits compartilhados" onChange={(event) => setQuery(event.target.value)} />
       </InputGroup>
