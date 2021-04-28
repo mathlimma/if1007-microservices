@@ -7,9 +7,10 @@ import {
 import PropTypes from "prop-types";
 
 const KsKitGridItem = ({ data, hasAnalysis, onClick }) => {
-  const [engajamento] = useState((Math.random() * 100).toFixed(1).toString());
-  const [discutibilidade] = useState((Math.random() * 5).toFixed(1).toString());
-  const [consenso] = useState((Math.random() * 50).toFixed(1).toString());
+  const [engajamento] = useState((Math.random() * 100).toFixed(1));
+  const [discutibilidade] = useState((Math.random() * 5).toFixed(1));
+  const [consensoOf] = useState((Math.random() * 50).toFixed(0));
+  const [consenso] = useState((Math.random() * consensoOf).toFixed(1));
 
   const handleFooterClasses = () => {
     switch (data.type) {
@@ -43,11 +44,10 @@ const KsKitGridItem = ({ data, hasAnalysis, onClick }) => {
                 <p>Engajamento:{" "}
                   <span className="font-weight-bold">{engajamento}%</span>
                 </p>
-                <p>Discutibilidade:{" "}
-                  <span className="font-weight-bold">{discutibilidade}</span>
+                <p>Discutibilidade: Média de <span className="font-weight-bold">{discutibilidade}</span> respostas para cada pergunta
                 </p>
                 <p>Consenso:{" "}
-                  <span className="font-weight-bold">{consenso}</span>
+                  <span className="font-weight-bold">{consenso}</span> / {consensoOf} integrantes
                 </p>
               </div>
             </div>
