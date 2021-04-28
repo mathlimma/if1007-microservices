@@ -40,7 +40,8 @@ const SharePage = ({ kits }) => {
         isOpen={displaySuccessModal}
         title="Kit compartilhado com sucesso!"
         closeCallback={onSuccessClickClose}
-        confirmCallback={() => null} />
+        confirmCallback={() => null}
+        canCancel={false} />
       <KsKitGrid data={kits} itemOnClick={onCardClick} />
     </div>
   );

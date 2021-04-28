@@ -33,7 +33,7 @@ KsConfirmModal.propTypes = {
   canCancel: PropTypes.bool,
 };
 
-KsConfirmModal.defaultTypes = {
+KsConfirmModal.defaultProps = {
   title: "",
   text: "",
   canCancel: true,

@@ -46,7 +46,8 @@ const SearchPage = () => {
         isOpen={displaySuccessModal}
         title="Kit salvo com sucesso!"
         closeCallback={onSuccessClickClose}
-        confirmCallback={() => null} />
+        confirmCallback={() => null}
+        canCancel={false} />
       <InputGroup className="mt-5">
         <Input placeholder="Procure kits compartilhados" onChange={(event) => setQuery(event.target.value)} />
       </InputGroup>
