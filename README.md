@@ -1,5 +1,7 @@
 # if1007-microservices
 
+## Aplicação: http://d1nchicj6tjs34.cloudfront.net/
+
 Kit sharing - Projeto da disciplina de microsserviços do CIn - UFPE ministrada pelo Prof. Vinicius Garcia.
 
 contexto:  uma problema/oportunidade analisado pelo nosso grupo na plataforma streteegia eh sobre o uso dos kits por parte de cada usuário, cada um tem que criar seus proprios kits e não consegue compatilhar com as outras pessoas que usam a plataforma. Isso pode se tornar uma tarefa massante pois cada kit tem que ser feito do zero. Afim de ajudar na gestão das ferramentas (kits) produzidos em Strateegia por um usuário, possibilitando o compartilhamento desses kits por outro usuário. O usuário poderá pesquisar por kits com o tema que ele deseja e escolher o que mais se adequa ao que ele quer e também tem a opção de alterar as suas questoẽs fazendo uma cópia do kit disponibilizado. Será feita também uma análise de todos os kits compartilhados, mostrando o engajamento de cada um e os principais tópicos/comentários para ajudar o usuário a escolher um kit.
@@ -20,7 +22,3 @@ Membros: - Matheus Lima
          - Geraldo Medeiros
          - Hitallo Cavalcanti
         
-
-
-arquivo que salvou p configurar o kafka:
-https://itnext.io/kafka-on-kubernetes-the-strimzi-way-part-1-bdff3e451788
